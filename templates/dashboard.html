@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Log Monitoring Dashboard</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Log Monitoring Dashboard</h1>
+
+    <div class="section">
+      <h2>Live Logs</h2>
+      <pre id="log-output"></pre>
+    </div>
+
+    <div class="section">
+      <h2>Login Failures</h2>
+      <p>Total Failed Logins: <span id="fail-count">0</span></p>
+    </div>
+
+    <div class="section">
+      <h2>Top IP Addresses</h2>
+      <ul id="top-ips"></ul>
+      <input type="text" id="block-ip-input" placeholder="Enter IP to block" />
+      <button onclick="blockIP()">Block IP</button>
+    </div>
+
+    <div class="section">
+      <h2>Report</h2>
+      <button onclick="window.location='/export-pdf'">Download PDF</button>
+    </div>
+  </div>
+
+  <script>
+    function fetchLogs() {
+      fetch('/logs')
+        .then(res => res.json())
+        .then(data => {
+          document.getElementById('log-output').textContent = data.join('\n');
+        });
+    }
+
+    function fetchFailedLogins() {
+      fetch('/failed-logins')
+        .then(res => res.json())
+        .then(data => {
+          document.getElementById('fail-count').textContent = data.total;
+        });
+    }
+
+    function fetchTopIPs() {
+      fetch('/top-ips')
+        .then(res => res.json())
+        .then(data => {
+          const ul = document.getElementById('top-ips');
+          ul.innerHTML = '';
+          data.forEach(([ip, count]) => {
+            const li = document.createElement('li');
+            li.textContent = ${ip} (${count} attempts);
+            ul.appendChild(li);
+          });
+        });
+    }
+
+    function blockIP() {
+      const ip = document.getElementById('block-ip-input').value;
+      fetch('/block-ip', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ip })
+      })
+        .then(res => res.json())
+        .then(data => {
+          alert(data.status === 'blocked' ? Blocked IP: ${data.ip} : 'Error');
+        });
+    }
+
+    setInterval(() => {
+      fetchLogs();
+      fetchFailedLogins();
+      fetchTopIPs();
+    }, 3000);
+  </script>
+</body>
+</html>
