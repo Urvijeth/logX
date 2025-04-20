@@ -58,7 +58,7 @@
           ul.innerHTML = '';
           data.forEach(([ip, count]) => {
             const li = document.createElement('li');
-            li.textContent = ${ip} (${count} attempts);
+            li.textContent = `${ip} (${count} attempts)`;
             ul.appendChild(li);
           });
         });
@@ -73,7 +73,7 @@
       })
         .then(res => res.json())
         .then(data => {
-          alert(data.status === 'blocked' ? Blocked IP: ${data.ip} : 'Error');
+          alert(data.status === 'blocked' ? `Blocked IP: ${data.ip}` : 'Error');
         });
     }
 
