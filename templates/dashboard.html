@@ -1,37 +1,81 @@
+// dashboard.html (place this in /templates)
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Log Monitoring Dashboard</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
-  </head>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Log Monitor Dashboard</title>
+  <!-- Link to static files -->
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<script src="{{ url_for('static', filename='js/dashboard.js') }}" defer></script>
+
+</head>
+
 <body>
   <div class="container">
-    <h1>Log Monitoring Dashboard</h1>
+    <aside class="sidebar">
+      <h1>Log Monitor</h1>
+      <input type="text" placeholder="Search" class="search" />
+      <nav>
+        <a href="#">Dashboard</a>
+        <a href="#">Reports</a>
+        <a href="#">Block IP</a>
+        <a href="#">Settings</a>
+      </nav>
+    </aside>
 
-    <div class="section">
-      <h2>Live Logs</h2>
-      <pre id="log-output"></pre>
-    </div>
+    <main class="main-content">
+      <header class="top-bar">
+        <h2>Dashboard</h2>
+        <div>
+          <button>🔍</button>
+          <button>👤</button>
+        </div>
+      </header>
 
-    <div class="section">
-      <h2>Login Failures</h2>
-      <p>Total Failed Logins: <span id="fail-count">0</span></p>
-    </div>
+      <section class="stats">
+        <div class="card">
+          <p>Total Login Failures</p>
+          <p class="fail">237</p>
+        </div>
+        <div class="card">
+          <p>Blocked IPs</p>
+          <p>5</p>
+        </div>
+        <div class="card">
+          <p>New Logs (Last 10 min)</p>
+          <p>18</p>
+        </div>
+        <div class="card">
+          <p>Alerts Triggered</p>
+          <p class="fail">3</p>
+        </div>
+      </section>
 
-    <div class="section">
-      <h2>Top IP Addresses</h2>
-      <ul id="top-ips"></ul>
-      <input type="text" id="block-ip-input" placeholder="Enter IP to block" />
-      <button onclick="blockIP()">Block IP</button>
-    </div>
+      <section class="log-table">
+        <h3>Real-time Log</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Timestamp</th>
+              <th>Source IP</th>
+              <th>Status</th>
+              <th>Action Taken</th>
+            </tr>
+          </thead>
+          <tbody id="log-table"></tbody>
+        </table>
+      </section>
 
-    <div class="section">
-      <h2>Report</h2>
-      <button onclick="window.location='/export-pdf'">Download PDF</button>
-    </div>
+      <section class="form-section">
+        <input id="block-ip" type="text" placeholder="Block IP" />
+        <input id="email-alert" type="email" placeholder="Email Alert" />
+        <button onclick="submitForm()">Submit</button>
+      </section>
+    </main>
   </div>
+  <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
 </body>
+
 </html>
