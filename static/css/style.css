@@ -103,7 +103,8 @@ input[type="email"] {
   background-color: #ff3d00; /* Button color */
   color: #ffffff;
   cursor: pointer;
-  margin-left: 10px;
+  margin-left: 1px;
+  margin-top:15px;
 }
 
 .input-box button:hover {
