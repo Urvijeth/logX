@@ -1,56 +1,37 @@
-function fetchLogs() {
-  fetch('/logs')
-    .then(res => res.json())
-    .then(data => {
-      document.getElementById('log-output').textContent = data.join('\n');
-    });
-}
+const logData = [
+  { time: '12:06:24', ip: '192.0.2.124', status: 'Fail', action: 'Blocked' },
+  { time: '12:06:20', ip: '198.51.100.52', status: 'Success', action: 'Success' },
+  { time: '12:06:20', ip: '192.0.2.124', status: 'Fail', action: 'Blocked' },
+  { time: '12:06:20', ip: '192.0.2.12', status: 'Success', action: 'Success' }, // Corrected IP
+  { time: '12:05:07', ip: '192.0.2.124', status: 'Blocked', action: 'Blocked' },
+  { time: '12:06:07', ip: '198.51.100.52', status: 'Success', action: 'Blocked' },
+];
 
-function fetchFailedLogins() {
-  fetch('/failed-logins')
-    .then(res => res.json())
-    .then(data => {
-      document.getElementById('fail-count').textContent = data.total;
-    });
-}
+const tbody = document.getElementById("log-table");
 
-function fetchTopIPs() {
-  fetch('/top-ips')
-    .then(res => res.json())
-    .then(data => {
-      const ul = document.getElementById('top-ips');
-      ul.innerHTML = '';
-      data.forEach(([ip, count]) => {
-        const li = document.createElement('li');
-        li.textContent = `${ip} (${count} attempts)`;
-        ul.appendChild(li);
-      });
-    });
-}
-
-function blockIP() {
-  const ip = document.getElementById('block-ip-input').value;
-  fetch('/block-ip', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ ip })
-  })
-    .then(res => res.json())
-    .then(data => {
-      alert(data.status === 'blocked' ? `Blocked IP: ${data.ip}` : 'Error');
-    });
-}
-
-// Auto-refresh
-setInterval(() => {
-  fetchLogs();
-  fetchFailedLogins();
-  fetchTopIPs();
-}, 3000);
-
-// Initial fetch
-document.addEventListener('DOMContentLoaded', () => {
-  fetchLogs();
-  fetchFailedLogins();
-  fetchTopIPs();
+logData.forEach(entry => {
+  const row = document.createElement("tr");
+  row.innerHTML = `
+    <td class='p-3'>${entry.time}</td>
+    <td class='p-3'>${entry.ip}</td>
+    <td class='p-3'><span class="${getStatusClass(entry.status)}">${entry.status}</span></td>
+    <td class='p-3'>${entry.action}</td>
+  `;
+  tbody.appendChild(row);
 });
+
+function getStatusClass(status) {
+  if (status === 'Fail') return 'status-fail';
+  if (status === 'Success') return 'status-success';
+  return 'status-blocked';
+}
+
+function blockIp() {
+  const ip = document.getElementById("block-ip").value;
+  alert(`Block IP submitted: ${ip}`);
+}
+
+function setEmailAlert() {
+  const email = document.getElementById("email-alert").value;
+  alert(`Email alert set for: ${email}`);
+}

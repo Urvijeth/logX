@@ -1,65 +1,111 @@
+/* General Body Styles */
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
-  margin: 0;
-  padding: 0;
-  color: #333;
+  background-color: #121212; /* Dark background */
+  color: #ffffff; /* White text */
+  font-family: 'Arial', sans-serif;
 }
 
-.container {
-  max-width: 900px;
-  margin: 20px auto;
+/* Dashboard Container */
+.dashboard-container {
   padding: 20px;
-  background: white;
+}
+
+/* Stat Cards */
+.stats-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.stat-card {
+  background-color: #1e1e1e; /* Dark card background */
   border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  padding: 15px;
+  text-align: center;
+  flex: 1;
+  margin: 0 10px;
 }
 
-h1, h2 {
-  color: #222;
+.stat-title {
+  font-size: 16px;
+  color: #ccc; /* Light grey title */
 }
 
-.section {
-  margin-bottom: 30px;
+.stat-value {
+  font-size: 24px;
+  color: #ff3d00; /* Highlighted value color */
 }
 
-pre {
-  background: #111;
-  color: #0f0;
+/* Log Table Styles */
+.log-table-section {
+  margin-bottom: 20px;
+}
+
+.log-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.log-table th, .log-table td {
   padding: 10px;
-  height: 300px;
-  overflow-y: scroll;
-  border-radius: 5px;
+  border: 1px solid #444;
 }
 
-input[type="text"] {
-  padding: 8px;
-  margin-top: 10px;
-  width: 250px;
+.log-table th {
+  background-color: #1e1e1e; /* Dark header */
+  color: #ffffff;
 }
 
-button {
-  padding: 8px 16px;
-  margin-left: 10px;
-  background-color: #007BFF;
+.log-table td {
+  background-color: #2c2c2c; /* Dark row background */
+  color: #ffffff;
+}
+
+/* Status Colors */
+.status-success {
+  background-color: #007c7c; /* Green for success */
+}
+
+.status-fail {
+  background-color: #ff4444; /* Red for fail */
+}
+
+.status-blocked {
+  background-color: #a62727; /* Dark red for blocked */
+}
+
+/* Input Section */
+.input-section {
+  margin-top: 20px;
+}
+
+.input-box {
+  margin-bottom: 15px;
+}
+
+.input-box input {
+  width: calc(100% - 80px);
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #444;
+  background-color: #1e1e1e;
+  color: #ffffff;
+}
+
+input[type="email"] {
+  /* Specific style for email input */
+}
+
+.input-box button {
+  padding: 10px;
+  border-radius: 4px;
   border: none;
-  color: white;
-  border-radius: 4px;
+  background-color: #ff3d00; /* Button color */
+  color: #ffffff;
   cursor: pointer;
+  margin-left: 10px;
 }
 
-button:hover {
-  background-color: #0056b3;
-}
-
-ul {
-  list-style-type: none;
-  padding-left: 0;
-}
-
-ul li {
-  background: #eee;
-  padding: 8px;
-  margin: 5px 0;
-  border-radius: 4px;
+.input-box button:hover {
+  background-color: #ff5722; /* Darker shade on hover */
 }
