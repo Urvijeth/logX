@@ -93,8 +93,10 @@ This guide explains how to install and configure the **Squid proxy server** on a
 1. Open your browser.
 2. Visit some websites.
 3. In the terminal, run:
+
     '''bash 
     sudo tail -f /var/log/mylogs/web_access.log
+    
 You'll see real-time logs of your browser activity!
 
 ## Troubleshooting
@@ -103,7 +105,7 @@ You'll see real-time logs of your browser activity!
     - Make sure your browser is using the proxy.
 
     - Check Squid logs:
-    
+
     '''bash
      sudo journalctl -u squid
 
