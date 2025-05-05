@@ -34,6 +34,7 @@ This guide explains how to install and configure the **Squid proxy server** on a
    sudo dnf install squid -y
 
 2. **Enable and Start Squid:** 
+    ```bash
     sudo systemctl enable --now squid
 
 3. **Check the Status:** 
