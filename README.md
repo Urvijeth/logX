@@ -42,12 +42,14 @@ This guide explains how to install and configure the **Squid proxy server** on a
     sudo systemctl enable --now squid
 
 2. **Check the Status:** 
+
     ```bash
     sudo systemctl status squid
 
 ## Step 3: Create a Custom Log Folder
 
 1. **(Optional) If you want to store logs in your custom folder (e.g., /var/log/mylogs):**
+
     '''bash
     sudo mkdir /var/log/mylogs
     sudo chown squid:squid /var/log/mylogs
@@ -55,14 +57,17 @@ This guide explains how to install and configure the **Squid proxy server** on a
 ## Step 4: Configure Squid to Log to Your Folder
 
 1. **Edit the Squid config:**
+
     '''bash 
     sudo nano /etc/squid/squid.conf
 
 2. **Find the following line (or similar):**
+
     '''bash
     access_log /var/log/squid/access.log squid
 
 3. **Change it to or add**
+
     '''bash
     access_log /var/log/mylogs/web_access.log squid
 
@@ -70,12 +75,14 @@ This guide explains how to install and configure the **Squid proxy server** on a
     
 ##  Step 5: Restart Squid
 1. **Apply your config changes:**
+
     '''bash
     sudo systemctl restart squid
 
 
 ## Step 6: Configure Browser to Use the Proxy
 1. **Set your browser proxy to:**
+
     HTTP Proxy: 127.0.0.1
 
     Port: 3128
@@ -96,6 +103,7 @@ You'll see real-time logs of your browser activity!
     - Make sure your browser is using the proxy.
 
     - Check Squid logs:
+    
     '''bash
      sudo journalctl -u squid
 
