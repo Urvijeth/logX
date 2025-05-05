@@ -71,7 +71,7 @@ This guide explains how to install and configure the **Squid proxy server** on a
     ```bash
     access_log /var/log/mylogs/web_access.log squid
 
-   Press Ctrl + O to save, then Ctrl + X to exit
+Press Ctrl + O to save, then Ctrl + X to exit
     
 ##  Step 5: Restart Squid
 1. **Apply your config changes:**
