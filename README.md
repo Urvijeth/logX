@@ -50,7 +50,7 @@ This guide explains how to install and configure the **Squid proxy server** on a
 
 1. **(Optional) If you want to store logs in your custom folder (e.g., /var/log/mylogs):**
 
-    '''bash
+    ```bash
     sudo mkdir /var/log/mylogs
     sudo chown squid:squid /var/log/mylogs
 
@@ -58,17 +58,17 @@ This guide explains how to install and configure the **Squid proxy server** on a
 
 1. **Edit the Squid config:**
 
-    '''bash 
+    ```bash 
     sudo nano /etc/squid/squid.conf
 
 2. **Find the following line (or similar):**
 
-    '''bash
+    ```bash
     access_log /var/log/squid/access.log squid
 
 3. **Change it to or add**
 
-    '''bash
+    ```bash
     access_log /var/log/mylogs/web_access.log squid
 
    Press Ctrl + O to save, then Ctrl + X to exit
@@ -76,7 +76,7 @@ This guide explains how to install and configure the **Squid proxy server** on a
 ##  Step 5: Restart Squid
 1. **Apply your config changes:**
 
-    '''bash
+    ```bash
     sudo systemctl restart squid
 
 
@@ -94,9 +94,9 @@ This guide explains how to install and configure the **Squid proxy server** on a
 2. Visit some websites.
 3. In the terminal, run:
 
-    '''bash 
+    ```bash 
     sudo tail -f /var/log/mylogs/web_access.log
-    
+
 You'll see real-time logs of your browser activity!
 
 ## Troubleshooting
@@ -106,7 +106,7 @@ You'll see real-time logs of your browser activity!
 
     - Check Squid logs:
 
-    '''bash
+    ```bash
      sudo journalctl -u squid
 
 - Permission errors?
