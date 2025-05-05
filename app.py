@@ -20,7 +20,7 @@ def get_logs():
     logs = []
     if os.path.exists(LOG_FILE_PATH):
         with open(LOG_FILE_PATH, 'r') as f:
-            lines = f.readlines()[-50:]  # Read last 50 lines (for performance)
+            lines = f.readlines()[-10:]  # Read last 50 lines (for performance)
             for line in lines:
                 # Very basic parsing — adjust based on your system logs
                 parts = line.strip().split()
