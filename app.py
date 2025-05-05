@@ -8,7 +8,8 @@ blocked_ips = []
 saved_emails = []
 
 # Path to your system log file (Fedora: /var/log/secure or /var/log/auth.log usually)
-LOG_FILE_PATH = '/var/log/httpd/access_log'
+LOG_FILE_PATH = '/var/log/mylogs/web_access.log'  
+
 
 @app.route('/')
 def dashboard():
