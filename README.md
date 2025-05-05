@@ -5,7 +5,7 @@ log moinitor
 
 This guide explains how to install and configure the **Squid proxy server** on a Fedora system to log web browsing activity (HTTP and HTTPS) in real time. The logs are stored in a custom directory.
 
-## 📋 Table of Contents
+## Table of Contents
 
 - [Requirements](#requirements)
 - [Installation](#installation)
@@ -37,6 +37,7 @@ This guide explains how to install and configure the **Squid proxy server** on a
 
 
 1. **Enable and Start Squid:** 
+
     ```bash
     sudo systemctl enable --now squid
 
