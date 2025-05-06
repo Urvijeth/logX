@@ -1,5 +1,5 @@
 # logX
-log moinitor
+LogX is a versatile log monitor tools and manage both system logs and HTTP/HTTPS traffic logs efficiently.
 
 # Squid Proxy Setup on Fedora for HTTP/HTTPS Activity Logging
 
