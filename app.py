@@ -3,7 +3,7 @@ import os
 
 app = Flask(__name__)
 
-# In-memory storage
+# In-memory storage this is diffrenet for evevy one ..../
 blocked_ips = []
 saved_emails = []
 
