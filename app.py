@@ -44,16 +44,6 @@ def block_ip():
         blocked_ips.append(ip)
     return jsonify({'message': 'IP blocked successfully'})
 
-
-
-# @app.route('/set_email', methods=['POST'])
-# def set_email():
-#     data = request.get_json()
-#     email = data.get('email')
-#     if email and email not in saved_emails:
-#         saved_emails.append(email)
-#     return jsonify({'message': 'Email saved successfully'})
-
 @app.route('/set_email', methods=['POST'])
 def set_email():
     data = request.get_json()
