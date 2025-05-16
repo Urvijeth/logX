@@ -3,12 +3,12 @@ import os
 
 app = Flask(__name__)
 
-# In-memory storage this is diffrenet for evevy one ..../
 blocked_ips = []
 saved_emails = []
 
 # Path to your system log file (Fedora: /var/log/secure or /var/log/auth.log usually)
-LOG_FILE_PATH = '/var/log/mylogs/web_access.log'  
+LOG_FILE_PATH = '/var/log/mylogs/web_access.log'
+  
 
 
 @app.route('/')
@@ -20,9 +20,8 @@ def get_logs():
     logs = []
     if os.path.exists(LOG_FILE_PATH):
         with open(LOG_FILE_PATH, 'r') as f:
-            lines = f.readlines()[-10:]  # Read last 50 lines (for performance)
+            lines = f.readlines()[-10:]  # Read last 10
             for line in lines:
-                # Very basic parsing — adjust based on your system logs
                 parts = line.strip().split()
                 if len(parts) > 5:
                     timestamp = f"{parts[0]} {parts[1]} {parts[2]}"
