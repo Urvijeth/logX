@@ -1,5 +1,7 @@
 # logX
 LogX is a versatile log monitor tools and manage both system logs and HTTP/HTTPS traffic logs efficiently.
+![Screenshot](/home/leo/Pictures/Screenshots/)
+
 
 # Squid Proxy Setup on Fedora for HTTP/HTTPS Activity Logging
 
@@ -122,3 +124,4 @@ You'll see real-time logs of your browser activity!
 
     
 
+ 
